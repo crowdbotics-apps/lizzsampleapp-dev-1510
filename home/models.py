@@ -8,6 +8,7 @@ from django.db import models
 
 class CustomText(models.Model):
     title = models.CharField(max_length=150,)
+    lizzcustomfield = models.FloatField(null=True, blank=True,)
 
     def __str__(self):
         return self.title
@@ -44,16 +45,16 @@ class Car(models.Model):
     doors = models.BigIntegerField()
     engine = models.ForeignKey(
         "home.Engine",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="car_engine",
     )
     description = models.ForeignKey(
         "home.CustomText",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="car_description",
     )
 
@@ -65,8 +66,8 @@ class Engine(models.Model):
     torque = models.FloatField()
     description = models.ForeignKey(
         "home.CustomText",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="engine_description",
     )
